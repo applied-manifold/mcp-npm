@@ -1,14 +1,18 @@
 # @applied-manifold/spatial-compiler
 
-A local stdio MCP server that sends every call to Applied Manifold's hosted Spatial Compiler MCP at `https://mcp.spatialcompiler.dev`.
+Your agent gets fully simulated, engine-ready 3D in seconds through one call, instead of AI writing simulation code from scratch.
 
-Nothing compiles on your machine. This package only forwards MCP messages over HTTPS. Jobs are billed the same as when you use the hosted server directly.
+Spatial Compiler works with any MCP client. Godot is available today. Three.js, Unity, and Unreal are coming.
+
+This package is a local stdio MCP server that sends every call to Applied Manifold's hosted Spatial Compiler MCP at `https://mcp.spatialcompiler.dev`. Nothing compiles on your machine. Jobs are billed the same as when you use the hosted server directly.
+
+[Get Free API Key](https://console.appliedmanifold.com)
 
 More about Spatial Compiler: https://appliedmanifold.com
 
 ## Install and run
 
-You need Node.js 18 or newer and an API key. Get a key at https://console.appliedmanifold.com/sign-in?next=/api-keys
+You need Node.js 18 or newer and an API key. [Get Free API Key](https://console.appliedmanifold.com)
 
 ```sh
 SPATIAL_API_KEY=YOUR_KEY npx -y @applied-manifold/spatial-compiler
