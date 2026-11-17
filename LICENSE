@@ -1,0 +1,22 @@
+Copyright (c) 2026 Applied Manifold (MicroAngel). All rights reserved.
+
+This package (@spatial-compiler/mcp) is proprietary software. It is not open
+source.
+
+You may use this package only as a connector to the Spatial Compiler service
+operated by Applied Manifold, and only subject to the terms at
+https://appliedmanifold.com/terms/.
+
+You may not copy, modify, merge, publish, distribute, sublicense, or sell this
+package or any part of it, except as those terms or a separate written license
+from Applied Manifold allow.
+
+This package does not include Spatial Compiler or any compiler source. It is a
+network connector that forwards Model Context Protocol messages to the hosted
+service, where all processing takes place.
+
+THIS PACKAGE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+APPLIED MANIFOLD BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING
+FROM OR IN CONNECTION WITH THIS PACKAGE OR ITS USE.

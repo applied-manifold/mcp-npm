@@ -1,0 +1,38 @@
+{
+  "name": "@spatial-compiler/mcp",
+  "version": "0.1.0",
+  "description": "Local stdio MCP server that connects MCP clients to the hosted Spatial Compiler MCP from Applied Manifold.",
+  "license": "UNLICENSED",
+  "author": "Applied Manifold",
+  "homepage": "https://appliedmanifold.com",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "spatial-compiler",
+    "applied-manifold"
+  ],
+  "type": "module",
+  "bin": {
+    "spatial-compiler-mcp": "./src/index.js"
+  },
+  "main": "./src/index.js",
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node scripts/e2e.mjs",
+    "test:oauth": "node scripts/oauth-mock.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  }
+}

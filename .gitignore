@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.tgz
+.env
+.env.*
+*.log
+logs/
+npm-debug.log*
+PROGRESS.md
+BRIEF.md
+REPORT.md
+claude*.jsonl
+claude*.err
+*.jsonl
+*.err
