@@ -93,7 +93,7 @@ export class FileOAuthProvider {
     return {
       client_name: 'Spatial Compiler MCP (local connector)',
       client_uri: HOMEPAGE,
-      software_id: '@spatial-compiler/mcp',
+      software_id: '@applied-manifold/spatial-compiler',
       software_version: VERSION,
       redirect_uris: [this.redirectUrl],
       grant_types: ['authorization_code', 'refresh_token'],
@@ -178,7 +178,7 @@ export function nonInteractiveMessage() {
   return (
     'No API key set and no saved sign in, and this process cannot open a browser.\n' +
     `Set SPATIAL_API_KEY (get a key at ${KEY_URL})\n` +
-    'or run `npx -y @spatial-compiler/mcp login` once in a terminal to sign in.'
+    'or run `npx -y @applied-manifold/spatial-compiler login` once in a terminal to sign in.'
   );
 }
 

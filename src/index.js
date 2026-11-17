@@ -8,11 +8,11 @@ Every MCP message is forwarded to the hosted server. Nothing compiles on
 your machine; jobs are billed the same as the hosted server.
 
 Usage:
-  npx -y @spatial-compiler/mcp            Start the stdio MCP server
-  npx -y @spatial-compiler/mcp login      Sign in with your browser and save the session
-  npx -y @spatial-compiler/mcp logout     Forget the saved sign in
-  npx -y @spatial-compiler/mcp --help     Show this help
-  npx -y @spatial-compiler/mcp --version  Print the version
+  npx -y @applied-manifold/spatial-compiler            Start the stdio MCP server
+  npx -y @applied-manifold/spatial-compiler login      Sign in with your browser and save the session
+  npx -y @applied-manifold/spatial-compiler logout     Forget the saved sign in
+  npx -y @applied-manifold/spatial-compiler --help     Show this help
+  npx -y @applied-manifold/spatial-compiler --version  Print the version
 
 Environment:
   SPATIAL_API_KEY            API key (spck_live_... or spck_test_...). Preferred.

@@ -1,4 +1,4 @@
-# @spatial-compiler/mcp
+# @applied-manifold/spatial-compiler
 
 A local stdio MCP server that sends every call to Applied Manifold's hosted Spatial Compiler MCP at `https://mcp.spatialcompiler.dev`.
 
@@ -11,7 +11,7 @@ More about Spatial Compiler: https://appliedmanifold.com
 You need Node.js 18 or newer and an API key. Get a key at https://console.appliedmanifold.com/sign-in?next=/api-keys
 
 ```sh
-SPATIAL_API_KEY=YOUR_KEY npx -y @spatial-compiler/mcp
+SPATIAL_API_KEY=YOUR_KEY npx -y @applied-manifold/spatial-compiler
 ```
 
 Your MCP client normally starts this command for you. Use one of the setups below.
@@ -21,7 +21,7 @@ Your MCP client normally starts this command for you. Use one of the setups belo
 ### Claude Code
 
 ```sh
-claude mcp add spatial-compiler -e SPATIAL_API_KEY=YOUR_KEY -- npx -y @spatial-compiler/mcp
+claude mcp add spatial-compiler -e SPATIAL_API_KEY=YOUR_KEY -- npx -y @applied-manifold/spatial-compiler
 ```
 
 ### Cursor
@@ -33,7 +33,7 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (one proje
   "mcpServers": {
     "spatial-compiler": {
       "command": "npx",
-      "args": ["-y", "@spatial-compiler/mcp"],
+      "args": ["-y", "@applied-manifold/spatial-compiler"],
       "env": {
         "SPATIAL_API_KEY": "YOUR_KEY"
       }
@@ -49,17 +49,17 @@ Add this to `~/.codex/config.toml`:
 ```toml
 [mcp_servers.spatial-compiler]
 command = "npx"
-args = ["-y", "@spatial-compiler/mcp"]
+args = ["-y", "@applied-manifold/spatial-compiler"]
 env = { SPATIAL_API_KEY = "YOUR_KEY" }
 ```
 
 Or from a terminal:
 
 ```sh
-codex mcp add spatial-compiler --env SPATIAL_API_KEY=YOUR_KEY -- npx -y @spatial-compiler/mcp
+codex mcp add spatial-compiler --env SPATIAL_API_KEY=YOUR_KEY -- npx -y @applied-manifold/spatial-compiler
 ```
 
-Any other MCP client that can start a stdio server works the same way: run `npx -y @spatial-compiler/mcp` with `SPATIAL_API_KEY` in its environment.
+Any other MCP client that can start a stdio server works the same way: run `npx -y @applied-manifold/spatial-compiler` with `SPATIAL_API_KEY` in its environment.
 
 ## Sign in without an API key
 
@@ -68,13 +68,13 @@ If you start the server without a key, it opens a browser sign in against the ho
 If your client cannot open a browser, sign in once from a terminal:
 
 ```sh
-npx -y @spatial-compiler/mcp login
+npx -y @applied-manifold/spatial-compiler login
 ```
 
 To forget the saved session:
 
 ```sh
-npx -y @spatial-compiler/mcp logout
+npx -y @applied-manifold/spatial-compiler logout
 ```
 
 ## Environment variables
@@ -89,7 +89,7 @@ With a key set, the server sends `Authorization: Bearer <key>` and does not use 
 
 Logs go to stderr. stdout carries only the MCP stream.
 
-Run `npx -y @spatial-compiler/mcp --help` for a summary.
+Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 ## License
 

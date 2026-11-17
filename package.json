@@ -1,5 +1,5 @@
 {
-  "name": "@spatial-compiler/mcp",
+  "name": "@applied-manifold/spatial-compiler",
   "version": "0.1.0",
   "description": "Local stdio MCP server that connects MCP clients to the hosted Spatial Compiler MCP from Applied Manifold.",
   "license": "UNLICENSED",
