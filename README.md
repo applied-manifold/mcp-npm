@@ -2,7 +2,7 @@
 
 Your agent gets fully simulated, engine-ready 3D in seconds through one call, instead of AI writing simulation code from scratch.
 
-Spatial Compiler works with any MCP client. Godot is available today. Three.js, Unity, and Unreal are coming.
+Spatial Compiler works with any MCP client. Godot 4 is available today (a ready scene). three.js is available today (a sprite snippet that plays the packed RGBA sheet). Unity, Unreal Engine and Roblox are Soon.
 
 This package is a local stdio MCP server that sends every call to Applied Manifold's hosted Spatial Compiler MCP at `https://mcp.spatialcompiler.dev`. Nothing compiles on your machine. Jobs are billed the same as when you use the hosted server directly.
 
