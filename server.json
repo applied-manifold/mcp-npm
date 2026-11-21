@@ -12,7 +12,7 @@
   },
   "icons": [
     {
-      "src": "https://appliedmanifold.com/icon-512.png",
+      "src": "https://raw.githubusercontent.com/applied-manifold/mcp-npm/main/assets/logo.png",
       "mimeType": "image/png",
       "sizes": [
         "512x512"
