@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Local end to end check for the stdio connector.
-//   node scripts/e2e.mjs [--key-file path] [--spec path] [--skip-pack]
+//   node scripts/e2e.mjs --key-file path --spec path [--skip-pack]
 // The API key is read from a file into the child's environment and never printed.
+// You can also set SPATIAL_API_KEY_FILE and SPATIAL_E2E_SPEC.
 import { spawn, spawnSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -15,8 +16,8 @@ const opt = (name, fallback) => {
   const i = argv.indexOf(name);
   return i >= 0 ? argv[i + 1] : fallback;
 };
-const keyFile = opt('--key-file', '/workspace/spatial-compute/secrets/deploy-smoke-key.txt');
-const specFile = opt('--spec', '/workspace/spatial-compute/site-showcase-p2/content/pyro-examples/fire.pyro.toml');
+const keyFile = opt('--key-file', process.env.SPATIAL_API_KEY_FILE || '');
+const specFile = opt('--spec', process.env.SPATIAL_E2E_SPEC || '');
 const skipPack = argv.includes('--skip-pack');
 const EXPECTED_TOOLS = ['discover', 'add_input', 'estimate', 'submit', 'get_job', 'cancel_job'];
 
@@ -122,6 +123,14 @@ function findField(obj, pattern, depth = 0) {
   return undefined;
 }
 
+if (!keyFile) {
+  console.error('Pass --key-file or set SPATIAL_API_KEY_FILE to a file that contains the API key.');
+  process.exit(2);
+}
+if (!specFile) {
+  console.error('Pass --spec or set SPATIAL_E2E_SPEC to a pyro.toml file for the estimate check.');
+  process.exit(2);
+}
 const key = readFileSync(keyFile, 'utf8').trim();
 console.log(`key: ${key.slice(0, key.indexOf('_', 5) + 1)}… (length ${key.length})`);
 const spec = readFileSync(specFile, 'utf8');
