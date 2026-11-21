@@ -134,4 +134,4 @@ Ask your agent to write a spec, get a free price estimate, and run a job. You ge
 
 ## License
 
-Proprietary. Not open source. See [LICENSE](./LICENSE) and [https://appliedmanifold.com/terms/](https://appliedmanifold.com/terms/). This package does not include Spatial Compiler or any compiler source.
+MIT. Copyright 10356689 Canada Inc. (Applied Manifold). See [LICENSE](./LICENSE). This package does not include Spatial Compiler or any compiler source.
