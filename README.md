@@ -119,7 +119,7 @@ Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
 
-Ask your agent to write a spec, get a free price estimate, and run a job. You get back fully simulated, engine-ready 3D, plus a report your code can check.
+Ask your agent to write a spec, get a free price estimate, and run a job. You get back fully simulated, engine-ready 3D, plus a report your code can check. After a run, the bundled `verify-compiled-job` skill reads the receipt and inspects a framed still.
 
 ## Links
 
