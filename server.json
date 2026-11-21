@@ -1,0 +1,47 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.appliedmanifold/spatial-compiler",
+  "title": "Spatial Compiler",
+  "description": "Your agent gets fully simulated, engine-ready 3D in seconds, from one call.",
+  "version": "0.1.1",
+  "websiteUrl": "https://appliedmanifold.com",
+  "repository": {
+    "url": "https://github.com/applied-manifold/mcp-npm",
+    "source": "github",
+    "id": "1461753624"
+  },
+  "icons": [
+    {
+      "src": "https://appliedmanifold.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.spatialcompiler.dev"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@applied-manifold/spatial-compiler",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "SPATIAL_API_KEY",
+          "description": "API key from console.appliedmanifold.com. Optional if you sign in through the browser.",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

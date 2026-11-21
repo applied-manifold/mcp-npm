@@ -1,6 +1,6 @@
 {
   "name": "@applied-manifold/spatial-compiler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local stdio MCP server that connects MCP clients to the hosted Spatial Compiler MCP from Applied Manifold.",
   "license": "UNLICENSED",
   "author": "Applied Manifold",
@@ -34,5 +34,13 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "mcpName": "com.appliedmanifold/spatial-compiler",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applied-manifold/mcp-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/applied-manifold/mcp-npm/issues"
   }
 }

@@ -1,14 +1,22 @@
-# @applied-manifold/spatial-compiler
+# Spatial Compiler
 
-Your agent gets fully simulated, engine-ready 3D in seconds through one call, instead of AI writing simulation code from scratch.
+Your agent gets fully simulated, engine-ready 3D in seconds, from one call.
 
-Spatial Compiler works with any MCP client. Godot 4 is available today (a ready scene). three.js is available today (a sprite snippet that plays the packed RGBA sheet). Unity, Unreal Engine and Roblox are Soon.
+You write a spec, or your agent does. Spatial Compiler runs a real simulation and sends back effect sheets and assets you can drop into your game. You do not wait for your agent to write simulation or shader code from scratch. That path is slow, fragile, and often looks fake.
 
-This package is a local stdio MCP server that sends every call to Applied Manifold's hosted Spatial Compiler MCP at `https://mcp.spatialcompiler.dev`. Nothing compiles on your machine. Jobs are billed the same as when you use the hosted server directly.
+You get real simulation quality in seconds, not hours. The same spec gives you the same result. You see the price before you run. It works from any MCP client, including Claude Code, Cursor, and Codex, and over HTTP.
+
+Use the result in Godot 4 today.
+
+Games are where this starts. The same call also serves robotics, ecommerce, and other 3D work that needs a fully simulated, engine-ready result.
+
+This repository is the npm package [`@applied-manifold/spatial-compiler`](https://www.npmjs.com/package/@applied-manifold/spatial-compiler). It is a small connector that forwards MCP calls to [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev). You can also point a client at that URL directly. Nothing compiles on your machine. Jobs are billed the same as when you use the hosted server directly.
+
+This repository does not include Spatial Compiler or any compiler source.
 
 [Get Free API Key](https://console.appliedmanifold.com)
 
-More about Spatial Compiler: https://appliedmanifold.com
+More about Spatial Compiler: [https://appliedmanifold.com](https://appliedmanifold.com)
 
 ## Install and run
 
@@ -18,9 +26,7 @@ You need Node.js 18 or newer and an API key. [Get Free API Key](https://console.
 SPATIAL_API_KEY=YOUR_KEY npx -y @applied-manifold/spatial-compiler
 ```
 
-Your MCP client normally starts this command for you. Use one of the setups below.
-
-## Client setup
+Your MCP client normally starts this command for you. Use one of the setups below. If you omit the key, the connector opens a browser sign-in and remembers the session.
 
 ### Claude Code
 
@@ -28,7 +34,7 @@ Your MCP client normally starts this command for you. Use one of the setups belo
 claude mcp add spatial-compiler -e SPATIAL_API_KEY=YOUR_KEY -- npx -y @applied-manifold/spatial-compiler
 ```
 
-### Cursor
+### Cursor (stdio via npm)
 
 Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (one project):
 
@@ -45,6 +51,20 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (one proje
   }
 }
 ```
+
+### Cursor or any client (hosted MCP, no npm)
+
+```json
+{
+  "mcpServers": {
+    "spatial-compiler": {
+      "url": "https://mcp.spatialcompiler.dev"
+    }
+  }
+}
+```
+
+The hosted server signs you in through [console.appliedmanifold.com](https://console.appliedmanifold.com) when the client supports OAuth.
 
 ### Codex
 
@@ -67,7 +87,7 @@ Any other MCP client that can start a stdio server works the same way: run `npx 
 
 ## Sign in without an API key
 
-If you start the server without a key, it opens a browser sign in against the hosted service and remembers the session, so later runs start without asking. The session (including the refresh token) is saved in `~/.config/spatial-compiler/mcp-oauth.json` (or under `$XDG_CONFIG_HOME`) with file mode 0600.
+If you start the server without a key, it opens a browser sign-in against the hosted service and remembers the session, so later runs start without asking. The session (including the refresh token) is saved in `~/.config/spatial-compiler/mcp-oauth.json` (or under `$XDG_CONFIG_HOME`) with file mode 0600.
 
 If your client cannot open a browser, sign in once from a terminal:
 
@@ -89,12 +109,29 @@ npx -y @applied-manifold/spatial-compiler logout
 | `SPATIAL_COMPILER_API_KEY` | Same, used when `SPATIAL_API_KEY` is not set. |
 | `SPATIAL_COMPILER_MCP_URL` | Optional. Hosted MCP URL without a trailing slash. Default `https://mcp.spatialcompiler.dev`. |
 
-With a key set, the server sends `Authorization: Bearer <key>` and does not use the browser sign in.
+With a key set, the server sends `Authorization: Bearer <key>` and does not use the browser sign-in.
 
 Logs go to stderr. stdout carries only the MCP stream.
 
 Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
+## What the hosted server can do
+
+The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
+
+Ask your agent to write a spec, get a free price estimate, and run a job. You get back fully simulated, engine-ready 3D, plus a report your code can check.
+
+## Links
+
+- Site: [https://appliedmanifold.com](https://appliedmanifold.com)
+- Console and API keys: [https://console.appliedmanifold.com](https://console.appliedmanifold.com)
+- Hosted MCP: [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev)
+- Agent docs: [https://appliedmanifold.com/docs/agents/](https://appliedmanifold.com/docs/agents/)
+- MCP tools docs: [https://appliedmanifold.com/docs/mcp-tools/](https://appliedmanifold.com/docs/mcp-tools/)
+- Examples: [https://appliedmanifold.com/modules/pyro/](https://appliedmanifold.com/modules/pyro/)
+- Terms: [https://appliedmanifold.com/terms/](https://appliedmanifold.com/terms/)
+- Privacy: [https://appliedmanifold.com/privacy/](https://appliedmanifold.com/privacy/)
+
 ## License
 
-Proprietary. Not open source. `UNLICENSED`. See [LICENSE](./LICENSE) and https://appliedmanifold.com/terms/
+Proprietary. Not open source. See [LICENSE](./LICENSE) and [https://appliedmanifold.com/terms/](https://appliedmanifold.com/terms/). This package does not include Spatial Compiler or any compiler source.
