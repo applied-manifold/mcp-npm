@@ -2,11 +2,11 @@
 
 Your agent gets fully simulated, engine-ready 3D in seconds, from one call.
 
-You write a spec, or your agent does. Spatial Compiler runs a real simulation and sends back effect sheets and assets you can drop into your game. You do not wait for your agent to write simulation or shader code from scratch. That path is slow, fragile, and often looks fake.
+You write a spec, or your agent does. Spatial Compiler compiles it on the hosted service and sends back assets you can drop into your game. pyrofx compiles fire and smoke. meshfx repairs and lightens meshes. geofx shapes ground and terrain. shadowfx bakes moving shadows. You do not wait for your agent to write simulation or shader code from scratch.
 
 You get real simulation quality in seconds, not hours. The same spec gives you the same result. You see the price before you run. It works from any MCP client, including Claude Code, Cursor, and Codex, and over HTTP.
 
-Use the result in Godot 4 today.
+You can use the results in Godot, Unity, Unreal, and three.js.
 
 Games are where this starts. The same call also serves robotics, ecommerce, and other 3D work that needs a fully simulated, engine-ready result.
 
@@ -117,6 +117,8 @@ Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 ## What the hosted server can do
 
+The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx.
+
 The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
 
 Ask your agent to write a spec, get a free price estimate, and run a job. You get back fully simulated, engine-ready 3D, plus a report your code can check. After a run, the bundled `verify-compiled-job` skill reads the receipt and inspects a framed still.
@@ -128,7 +130,8 @@ Ask your agent to write a spec, get a free price estimate, and run a job. You ge
 - Hosted MCP: [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev)
 - Agent docs: [https://appliedmanifold.com/docs/agents/](https://appliedmanifold.com/docs/agents/)
 - MCP tools docs: [https://appliedmanifold.com/docs/mcp-tools/](https://appliedmanifold.com/docs/mcp-tools/)
-- Examples: [https://appliedmanifold.com/modules/pyro/](https://appliedmanifold.com/modules/pyro/)
+- Modules: [https://appliedmanifold.com/modules/](https://appliedmanifold.com/modules/)
+- Examples: [https://appliedmanifold.com/modules/pyrofx/](https://appliedmanifold.com/modules/pyrofx/)
 - Terms: [https://appliedmanifold.com/terms/](https://appliedmanifold.com/terms/)
 - Privacy: [https://appliedmanifold.com/privacy/](https://appliedmanifold.com/privacy/)
 
