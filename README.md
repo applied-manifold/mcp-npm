@@ -117,11 +117,43 @@ Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 ## What the hosted server can do
 
-The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx.
+The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx. meshfx accepts a GLB through `add_input`, including a model from an image-to-3D generator, and can repair it, build levels of detail, unwrap UVs, and bake textures.
 
 The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
 
 Ask your agent to write a spec, get a free price estimate, and run a job. You get back fully simulated, engine-ready 3D, plus a report your code can check. After a run, the bundled `verify-compiled-job` skill reads the receipt and inspects a framed still.
+
+## Clean up generated meshes (meshfx)
+
+Send a GLB from an image-to-3D generator, or any other GLB, with `add_input`. meshfx repairs the surface, builds lighter levels of detail, unwraps UVs when needed, and bakes textures. You get a GLB back, plus a report your agent can read.
+
+The hosted API accepts a GLB of at most 64 MB, in the `source.file` slot.
+
+A Draft bake costs $0.10. A Final bake is priced by the triangle count of the uploaded GLB. It is $1 up to 50,000 triangles, $2 up to 500,000, $4 up to 2,000,000, and $6 above that. Repeats of an unchanged spec are free. `estimate` shows the exact price and is free.
+
+On the hosted service, meshfx can:
+
+- Repair the surface: weld nearby vertices, fix face winding, fill small holes, remove floating fragments, and remesh a solid part when you ask
+- Build levels of detail, including a reduced triangle budget for the first level
+- Keep the source UVs, unwrap new charts, or repack existing charts
+- Bake base colour, normal, metallic-roughness, occlusion, and emissive textures
+
+For a generated model, set `source.kind = "generated"` and `units.size_m` to the real-world size you want, in metres, so cleanup defaults and scale are applied.
+
+Ask your agent:
+
+> Clean up this generated GLB for a game. Repair the mesh, unwrap UVs if the source UVs fail, bake textures, and build 3 levels of detail. Set the height to 2 metres.
+
+Tool call flow:
+
+1. Call `add_input` with the GLB filename, byte size, and sha256, then PUT the file to the upload URL until the input is ready.
+2. Call `estimate` with module `meshfx` and a `.meshfx.toml` spec that sets `source.file` to that input. Use quality `draft` or `final`.
+3. Call `submit` with the same spec to start the bake.
+4. Call `get_job` until the job finishes, then download the GLB and `bake_report.json`.
+
+[Get Free API Key](https://console.appliedmanifold.com)
+
+See the [meshfx module](https://appliedmanifold.com/modules/mesh/) and the [meshfx docs](https://appliedmanifold.com/docs/mesh/).
 
 ## Links
 
