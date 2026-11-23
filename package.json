@@ -1,7 +1,7 @@
 {
   "name": "@applied-manifold/spatial-compiler",
-  "version": "0.1.3",
-  "description": "Local stdio MCP server that connects MCP clients to the hosted Spatial Compiler MCP from Applied Manifold.",
+  "version": "0.1.4",
+  "description": "Local stdio MCP connector for the hosted Spatial Compiler: pyrofx fire and smoke, meshfx meshes, geofx ground and terrain, and shadowfx.",
   "license": "MIT",
   "author": "Applied Manifold",
   "homepage": "https://appliedmanifold.com",
