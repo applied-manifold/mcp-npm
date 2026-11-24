@@ -117,7 +117,7 @@ Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 ## What the hosted server can do
 
-The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx. meshfx accepts a GLB through `add_input`, including a model from an image-to-3D generator, and can repair it, build levels of detail, unwrap UVs, and bake textures.
+The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx. meshfx accepts a GLB through `add_input`, including a model from an image-to-3D generator, and can repair it, make it lighter, and build levels of detail. The result loads in Godot and three.js. The hosted bake keeps the source UVs.
 
 The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
 
@@ -125,7 +125,7 @@ Ask your agent to write a spec, get a free price estimate, and run a job. You ge
 
 ## Clean up generated meshes (meshfx)
 
-Send a GLB from an image-to-3D generator, or any other GLB, with `add_input`. meshfx repairs the surface, builds lighter levels of detail, unwraps UVs when needed, and bakes textures. You get a GLB back, plus a report your agent can read.
+Send a GLB from an image-to-3D generator, or any other GLB, with `add_input`. meshfx repairs the surface and builds lighter levels of detail. You get a GLB back that loads in Godot and three.js, plus a report your agent can read. The hosted bake keeps the source UVs.
 
 The hosted API accepts a GLB of at most 64 MB, in the `source.file` slot.
 
@@ -134,15 +134,16 @@ A Draft bake costs $0.10. A Final bake is priced by the triangle count of the up
 On the hosted service, meshfx can:
 
 - Repair the surface: weld nearby vertices, fix face winding, fill small holes, remove floating fragments, and remesh a solid part when you ask
+- When reduction leaves an edge shared by three or more faces, a pinch split turns that edge into two sheets
 - Build levels of detail, including a reduced triangle budget for the first level
-- Keep the source UVs, unwrap new charts, or repack existing charts
-- Bake base colour, normal, metallic-roughness, occlusion, and emissive textures
+- Keep the source UVs
+- Write a box, sphere, capsule or hull collider, named for Godot, Unity, Unreal or OMI. Import is checked in Godot only
 
 For a generated model, set `source.kind = "generated"` and `units.size_m` to the real-world size you want, in metres, so cleanup defaults and scale are applied.
 
 Ask your agent:
 
-> Clean up this generated GLB for a game. Repair the mesh, unwrap UVs if the source UVs fail, bake textures, and build 3 levels of detail. Set the height to 2 metres.
+> Clean up this generated GLB. Repair the mesh, make it lighter, and build 3 levels of detail. Set the height to 2 metres.
 
 Tool call flow:
 
