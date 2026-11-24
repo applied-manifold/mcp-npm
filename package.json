@@ -1,6 +1,6 @@
 {
   "name": "@applied-manifold/spatial-compiler",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Local stdio MCP connector for the hosted Spatial Compiler: clean up generated GLB meshes with meshfx, plus pyrofx fire and smoke, geofx terrain, and shadowfx.",
   "license": "MIT",
   "author": "Applied Manifold",
