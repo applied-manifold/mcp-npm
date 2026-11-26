@@ -3,7 +3,7 @@
   "name": "com.appliedmanifold/spatial-compiler",
   "title": "Spatial Compiler",
   "description": "Your agent gets fully simulated, engine-ready 3D in seconds, from one call.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "websiteUrl": "https://appliedmanifold.com",
   "repository": {
     "url": "https://github.com/applied-manifold/mcp-npm",
@@ -29,7 +29,7 @@
     {
       "registryType": "npm",
       "identifier": "@applied-manifold/spatial-compiler",
-      "version": "0.1.7",
+      "version": "0.1.8",
       "transport": {
         "type": "stdio"
       },

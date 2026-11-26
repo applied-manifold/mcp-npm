@@ -89,7 +89,7 @@ Any other MCP client that can start a stdio server works the same way: run `npx 
 
 ## Sign in without an API key
 
-If you start the server without a key, it opens a browser sign-in against the hosted service and remembers the session, so later runs start without asking. The session (including the refresh token) is saved in `~/.config/spatial-compiler/mcp-oauth.json` (or under `$XDG_CONFIG_HOME`) with file mode 0600.
+If you start the server without a key, it opens a browser sign-in against the hosted service and remembers the session, so later runs start without asking. If the process cannot open a browser, it still answers initialize and tools/list, and tools/call returns an error until you set SPATIAL_API_KEY or sign in. The session (including the refresh token) is saved in `~/.config/spatial-compiler/mcp-oauth.json` (or under `$XDG_CONFIG_HOME`) with file mode 0600.
 
 If your client cannot open a browser, sign in once from a terminal:
 

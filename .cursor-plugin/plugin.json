@@ -1,7 +1,7 @@
 {
   "name": "spatial-compiler",
   "description": "Your agent gets fully simulated, engine-ready 3D in seconds, from one call.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Applied Manifold",
     "email": "eyal@microangel.so"

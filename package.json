@@ -1,6 +1,6 @@
 {
   "name": "@applied-manifold/spatial-compiler",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Your agent gets fully simulated, engine-ready 3D in seconds through the hosted Spatial Compiler MCP.",
   "license": "MIT",
   "author": "Applied Manifold",
@@ -38,7 +38,8 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "node scripts/e2e.mjs",
-    "test:oauth": "node scripts/oauth-mock.mjs"
+    "test:oauth": "node scripts/oauth-mock.mjs",
+    "test:unauth": "node scripts/unauth-stdio.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2"
