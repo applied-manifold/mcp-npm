@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.appliedmanifold/spatial-compiler",
   "title": "Spatial Compiler",
-  "description": "Your agent can clean up a generated GLB with meshfx, and compile fire, smoke, terrain, and shadows.",
-  "version": "0.1.6",
+  "description": "Your agent gets fully simulated, engine-ready 3D in seconds, from one call.",
+  "version": "0.1.7",
   "websiteUrl": "https://appliedmanifold.com",
   "repository": {
     "url": "https://github.com/applied-manifold/mcp-npm",
@@ -29,7 +29,7 @@
     {
       "registryType": "npm",
       "identifier": "@applied-manifold/spatial-compiler",
-      "version": "0.1.6",
+      "version": "0.1.7",
       "transport": {
         "type": "stdio"
       },

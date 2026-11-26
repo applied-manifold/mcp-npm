@@ -1,14 +1,16 @@
 # Spatial Compiler
 
+[![Spatial Compiler MCP server](https://glama.ai/mcp/servers/applied-manifold/mcp-npm/badges/score.svg)](https://glama.ai/mcp/servers/applied-manifold/mcp-npm)
+
 Your agent gets fully simulated, engine-ready 3D in seconds, from one call.
 
-You write a spec, or your agent does. Spatial Compiler compiles it on the hosted service and sends back assets you can drop into your game. pyrofx compiles fire and smoke. meshfx repairs and lightens meshes. geofx shapes ground and terrain. shadowfx bakes moving shadows. You do not wait for your agent to write simulation or shader code from scratch.
+You write a spec, or your agent does. Spatial Compiler compiles it on the hosted service and sends back assets you can load in Godot, three.js, Unity, and Unreal. You can compile fire and smoke, clean up a generated mesh and build levels of detail, or write a terrain map. You do not wait for your agent to write simulation or shader code from scratch.
 
 You get real simulation quality in seconds, not hours. The same spec gives you the same result. You see the price before you run. It works from any MCP client, including Claude Code, Cursor, and Codex, and over HTTP.
 
 You can use the results in Godot, Unity, Unreal, and three.js.
 
-Games are where this starts. The same call also serves robotics, ecommerce, and other 3D work that needs a fully simulated, engine-ready result.
+Games are a common starting point. The same call also serves robotics, ecommerce, and other 3D work that needs a fully simulated, engine-ready result.
 
 This repository is the npm package [`@applied-manifold/spatial-compiler`](https://www.npmjs.com/package/@applied-manifold/spatial-compiler). It is a small connector that forwards MCP calls to [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev). You can also point a client at that URL directly. Nothing compiles on your machine. Jobs are billed the same as when you use the hosted server directly.
 
@@ -117,7 +119,7 @@ Run `npx -y @applied-manifold/spatial-compiler --help` for a summary.
 
 ## What the hosted server can do
 
-The hosted service compiles fire and smoke with pyrofx, meshes with meshfx, ground and terrain with geofx, and moving shadows with shadowfx. meshfx accepts a GLB through `add_input`, including a model from an image-to-3D generator, and can repair it, make it lighter, and build levels of detail. The result loads in Godot and three.js. The hosted bake keeps the source UVs.
+The hosted service compiles fire and smoke with pyrofx, repairs and lightens meshes with meshfx, and writes terrain maps with geofx, including optional terrain shadows. meshfx accepts a GLB through `add_input`, including a model from an image-to-3D generator, and can repair it, make it lighter, and build levels of detail. The result loads in Godot and three.js. The hosted bake keeps the source UVs.
 
 The hosted server lists `discover`, `add_input`, `estimate`, `submit`, `get_job`, and `cancel_job`. `estimate` is free. `submit` starts a paid job.
 
@@ -159,6 +161,7 @@ See the [meshfx module](https://appliedmanifold.com/modules/mesh/) and the [mesh
 ## Links
 
 - Site: [https://appliedmanifold.com](https://appliedmanifold.com)
+- Glama listing: [https://glama.ai/mcp/servers/applied-manifold/mcp-npm](https://glama.ai/mcp/servers/applied-manifold/mcp-npm)
 - Console and API keys: [https://console.appliedmanifold.com](https://console.appliedmanifold.com)
 - Hosted MCP: [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev)
 - Agent docs: [https://appliedmanifold.com/docs/agents/](https://appliedmanifold.com/docs/agents/)
