@@ -71,8 +71,9 @@ async function main(argv) {
   const signInFirst = !oauth.hasSavedTokens(url);
   if (signInFirst) {
     if (oauth.clearlyNonInteractive()) {
-      process.stderr.write(`${oauth.nonInteractiveMessage()}\n`);
-      return 1;
+      const { runUnauthCatalog } = await import('./unauth.js');
+      await runUnauthCatalog();
+      return undefined;
     }
     log('No API key set. Starting browser sign in.');
   }

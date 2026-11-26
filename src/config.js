@@ -5,7 +5,7 @@ const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url),
 export const VERSION = pkg.version;
 export const DEFAULT_MCP_URL = 'https://mcp.spatialcompiler.dev';
 export const SCOPES = 'compile read';
-export const KEY_URL = 'https://console.appliedmanifold.com/sign-in?next=/api-keys';
+export const KEY_URL = 'https://console.appliedmanifold.com';
 export const HOMEPAGE = 'https://appliedmanifold.com';
 export const USER_AGENT = `spatial-compiler-mcp/${VERSION} node/${process.versions.node}`;
 
