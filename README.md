@@ -1,6 +1,7 @@
 # Spatial Compiler
 
 [![Spatial Compiler MCP server](https://glama.ai/mcp/servers/applied-manifold/mcp-npm/badges/score.svg)](https://glama.ai/mcp/servers/applied-manifold/mcp-npm)
+[![Spatial Compiler MCP connector](https://glama.ai/mcp/connectors/com.appliedmanifold/spatial-compiler/badges/score.svg)](https://glama.ai/mcp/connectors/com.appliedmanifold/spatial-compiler)
 
 Your agent gets fully simulated, engine-ready 3D in seconds, from one call.
 
@@ -162,6 +163,7 @@ See the [meshfx module](https://appliedmanifold.com/modules/mesh/) and the [mesh
 
 - Site: [https://appliedmanifold.com](https://appliedmanifold.com)
 - Glama listing: [https://glama.ai/mcp/servers/applied-manifold/mcp-npm](https://glama.ai/mcp/servers/applied-manifold/mcp-npm)
+- Glama connector: [https://glama.ai/mcp/connectors/com.appliedmanifold/spatial-compiler](https://glama.ai/mcp/connectors/com.appliedmanifold/spatial-compiler)
 - Console and API keys: [https://console.appliedmanifold.com](https://console.appliedmanifold.com)
 - Hosted MCP: [https://mcp.spatialcompiler.dev](https://mcp.spatialcompiler.dev)
 - Agent docs: [https://appliedmanifold.com/docs/agents/](https://appliedmanifold.com/docs/agents/)
