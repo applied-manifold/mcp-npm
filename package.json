@@ -1,6 +1,6 @@
 {
   "name": "@applied-manifold/spatial-compiler",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Your agent gets fully simulated, engine-ready 3D in seconds through the hosted Spatial Compiler MCP.",
   "license": "MIT",
   "author": "Applied Manifold",
@@ -27,6 +27,7 @@
     "src",
     "skills",
     "LICENSE",
+    "CHANGELOG.md",
     "README.md"
   ],
   "engines": {
