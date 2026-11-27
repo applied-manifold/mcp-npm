@@ -142,11 +142,11 @@ export const TOOLS = [
   tool(
     'discover',
     'Discover modules, schemas and recipes',
-    "Lists hosted modules, operations, status, and prices. With a module, returns that module's schema, examples, input slots, prices, and recipe names. With a module and a recipe or example, returns that preset spec.",
+    "Lists hosted modules, operations, status, and prices. Call this before estimate or submit to find a valid module, recipe, or example. With a module, returns that module's schema, examples, input slots, prices, and recipe names. With a module and a recipe or example, returns that preset spec. recipe and example are ignored unless a module is also set.",
     {
       type: 'object',
       properties: {
-        module: { type: 'string', enum: MODULES },
+        module: { type: 'string', enum: MODULES, description: 'Module id. pyro and pyrofx are the same fire, smoke, dust and explosion module.' },
         recipe: { type: 'string', description: 'A named preset, e.g. fireball' },
         example: { type: 'string', description: 'An example file, e.g. fireball.pyro.toml' },
       },
@@ -163,9 +163,9 @@ export const TOOLS = [
         filename: { type: 'string' },
         bytes: { type: 'integer', minimum: 1 },
         sha256: { type: 'string' },
-        content_type: { type: 'string' },
+        content_type: { type: 'string', description: 'MIME type of the bytes, for example model/gltf-binary. Optional; inferred from the filename when omitted.' },
         text: { type: 'string' },
-        idempotency_key: { type: 'string' },
+        idempotency_key: { type: 'string', description: 'Caller-chosen key. A retry with the same key and the same file returns the original input. A different file with the same key returns IDEMPOTENCY_CONFLICT.' },
       },
       required: ['filename'],
     },
@@ -174,7 +174,7 @@ export const TOOLS = [
   tool(
     'estimate',
     'Estimate price and time',
-    'Validates a job without running it or charging. Returns the price (price_usd, usual_price_usd, meter, breakdown, knobs), a one-line summary, whether the cache will hit, a quote, and a labeled time estimate. accept_required is true when the price is above the usual one. quote_required is true for batches and sweeps, and the quote id is in the result. A bake also includes the draft and final price of the same spec. A sweep includes its price range, axes, and parts. Large runs paginate per_variant with price_cursor. too_large names a knob that would bring the run under the time limit. quote_warning may include a suggested domain.voxel_m and price.',
+    'Validates a job without running it or charging. Call this before submit to see the price and time. Prefer this over submit with operation check when you only need pricing; use submit check when you need the validation report. Returns the price (price_usd, usual_price_usd, meter, breakdown, knobs), a one-line summary, whether the cache will hit, a quote, and a labeled time estimate. accept_required is true when the price is above the usual one. quote_required is true for batches and sweeps, and the quote id is in the result. A bake also includes the draft and final price of the same spec. A sweep includes its price range, axes, and parts. Large runs paginate per_variant with price_cursor. too_large names a knob that would bring the run under the time limit. quote_warning may include a suggested domain.voxel_m and price.',
     { type: 'object', properties: estimateProperties, required: ['spec'] },
     { readOnlyHint: true, openWorldHint: false },
   ),
@@ -198,10 +198,10 @@ export const TOOLS = [
     {
       type: 'object',
       properties: {
-        job_id: { type: 'string' },
+        job_id: { type: 'string', description: 'The job_id returned by submit.' },
         idempotency_key: { type: 'string', description: 'The idempotency_key of the job to return.' },
         wait_ms: waitMs,
-        batch: { type: 'string', description: 'List children of this batch job.' },
+        batch: { type: 'string', description: "Batch job_id. When set, list that batch's child jobs instead of recent jobs." },
         include_preview: {
           type: 'boolean',
           description: 'Include a framed inspect still. Default true only for detail=full; compact and lean return the preview path on the download base instead.',
@@ -209,8 +209,8 @@ export const TOOLS = [
         detail,
         state: { type: 'string', enum: ['queued', 'dispatched', 'running', 'succeeded', 'partial', 'failed', 'cancelled', 'rejected'] },
         spec_name: { type: 'string', description: 'When listing jobs, keep rows whose spec name matches.' },
-        limit: { type: 'integer', minimum: 1 },
-        cursor: { type: 'string' },
+        limit: { type: 'integer', minimum: 1, maximum: 100, description: 'Page size when listing jobs. Defaults to 20. Minimum 1, maximum 100.' },
+        cursor: { type: 'string', description: "Opaque cursor from a previous list's next_cursor. Pass it to read the next page." },
       },
     },
     { readOnlyHint: true, openWorldHint: false },
@@ -218,8 +218,8 @@ export const TOOLS = [
   tool(
     'cancel_job',
     'Cancel a job',
-    'Cancels a queued job, or stops the remaining parts of a sweep that spans several sheets. Returns the updated job.',
-    { type: 'object', properties: { job_id: { type: 'string' } }, required: ['job_id'] },
+    'Cancels a queued job, or stops the remaining parts of a sweep that spans several sheets. Returns the updated job. Do not use this to check status or to download results; call get_job for that. A bake that has already been dispatched cannot be cancelled.',
+    { type: 'object', properties: { job_id: { type: 'string', description: 'The job_id returned by submit. This is not an idempotency_key.' } }, required: ['job_id'] },
     { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
   ),
 ];
