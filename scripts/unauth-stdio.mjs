@@ -71,7 +71,7 @@ try {
   });
   check('initialize succeeds', !init.error, init.error ? JSON.stringify(init.error) : '');
   const info = init.result || {};
-  check('initialize returns serverInfo.version 0.1.8', info.serverInfo?.version === '0.1.8', info.serverInfo?.version || '');
+  check('initialize returns serverInfo.version 0.1.9', info.serverInfo?.version === '0.1.9', info.serverInfo?.version || '');
   check('initialize returns instructions', typeof info.instructions === 'string' && info.instructions.includes('console.appliedmanifold.com'));
   check('instructions do not use the deep sign-in URL', !String(info.instructions || '').includes('sign-in?next='));
 
